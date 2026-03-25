@@ -99,7 +99,7 @@ Distance(word_a, word_b) = matrix[a.rank][b.rank]  → ONE memory access
 Built from the EXACT 4,096² distribution. Not sampled. Not approximated.
 
 ```
-4,096 × 4,095 / 2 = 8,386,560 unique pairs
+4,096 × 4,096 / 2 = 8.4M unique pairs
 Sort all distances → empirical CDF
 SimilarityTable: 256 × f16 = 512 bytes
 similarity(distance) = 1.0 - CDF(distance)  → O(1) lookup
@@ -631,73 +631,99 @@ pub struct BuildStats {
     pub nsm_coverage: f32,          // fraction of NSM primes in vocab
     pub oov_words: usize,           // words resolved via CLAM buckets
     pub total_bytes: u64,           // ~9 MB
+    pub build_time_ms: u64,         // ~2000ms (dominated by distance matrix)
 }
 ```
 
-## MEMORY BUDGET
+## FILE LAYOUT
 
 ```
-Component               Size       Cache Level    Access Pattern
-────────────────        ────       ───────────    ──────────────
-Vocabulary hash         32 KB      L1             tokenize: per word
-Forms hash              64 KB      L1/L2          inflection: per word
-SimilarityTable         512 B      L1             calibrate: per distance
-Role vectors            7.5 KB     L1             bind: per triple
-NSM prime indices       2 KB       L1             decompose: per word
-Distance matrix (u8)    8 MB       L2             distance: per pair
-Vectors (BF16)          768 KB     L2             VSA encode: per word
-OOV buckets             4 KB       L1             OOV resolve: per OOV word
-────────────────        ────       ───────────    ──────────────
-TOTAL                   ~9 MB      L2/L3          Everything in cache
+crates/deepnsm/
+├── Cargo.toml
+├── src/
+│   ├── lib.rs                # pub mod everything, NsmRuntime struct
+│   ├── vocabulary.rs         # Vocabulary, WordEntry, PoS, Token
+│   ├── tokenizer.rs          # tokenize(), forms resolution, OOV
+│   ├── parser.rs             # parse(), SentenceStructure, SPO extraction
+│   ├── triple.rs             # SpoTriple (36-bit packed), distance, similarity
+│   ├── encoder.rs            # NsmEncoder, VSA binding, sentence composition
+│   ├── similarity.rs         # SimilarityTable, calibration, threshold translation
+│   ├── distance_matrix.rs    # DistanceMatrix (u8 palette, 8MB)
+│   ├── primes.rs             # NSM prime table, decomposition, nearest_prime
+│   ├── build.rs              # build_nsm_runtime(), artifact generation
+│   └── udf.rs                # DataFusion UDF registration
+├── data/
+│   └── README.md             # points to word_frequency/ in DeepNSM repo
+└── tests/
+    ├── test_tokenizer.rs
+    ├── test_parser.rs
+    ├── test_similarity.rs
+    └── test_integration.rs
+```
+
+Wire into lance-graph:
+```
+crates/lance-graph-planner/src/thinking/
+├── graph.rs          # add: with_semantics(NsmEncoder)
+├── semantic.rs       # NEW: semantic verb enhancements
+└── mod.rs            # add: pub mod semantic
 ```
 
 ## TESTS
 
-1. **Tokenizer**: "the big dog" → [(1,a), (156,j), (671,n)]
-2. **Inflection**: "bit" → rank of "bite", "sleeping" → rank of "sleep"
-3. **OOV**: "cardiology" → resolves to nearest Tier 1 word
-4. **Parser**: "the dog bit the man" → SPO(dog, bite, man)
-5. **Passive**: "the man was bitten by the dog" → SPO(dog, bite, man)
-6. **Negation**: "the dog did not bite the man" → SPO(dog, bite, man, negated=true)
-7. **Modifier**: "the big dog bit the old man" → SPO + Mod(big→dog) + Mod(old→man)
-8. **Conjunction**: "the dog bit and scratched the man" → 2 triples
-9. **Distance symmetry**: distance(a,b) == distance(b,a)
-10. **Distance identity**: distance(a,a) == 0
-11. **Similarity monotonic**: if dist_a < dist_b then sim_a > sim_b
-12. **Similarity calibrated**: sim(random_pair) ≈ 0.5
-13. **SPO word order**: sim("dog bites man", "man bites dog") < sim("dog bites man", "dog bites man")
-14. **VSA unbinding**: unbind(bundle(bind(dog,S), bind(bite,P)), S) recovers dog
-15. **NSM decomposition**: decompose("journalism") contains "say" and "word"
-16. **ThinkingGraph integration**: SYNTHESIS merges triples with pred_sim > 0.85
-17. **Cosine equivalence**: bgz17 similarity rank-order matches cosine rank-order (ρ > 0.95)
-18. **Deterministic**: same input → same output, always, across runs
+### Tokenizer
+1. "the dog bit the man" → [1, 671, 2943, 1, 95] (ranks)
+2. "bit" → lemma "bite" (rank 2943) via forms table
+3. "sleeping" → lemma "sleep" via forms table
+4. "journalism" → OOV → nearest: "news" (rank 206)
+5. "" → empty vec
+6. "THE Dog BIT" → case-insensitive → same as lowercase
+
+### Parser
+7. "the big dog bit the old man" → SPO(dog, bite, man) + Mod(big→dog, old→man)
+8. "dog bites man" ≠ "man bites dog" (different subjects)
+9. "the dog did not bite the man" → SPO(dog, bite, man) + negated=true
+10. "the dog bit the man and the cat" → two triples (conjunction fork)
+11. "I think" → SPO(i, think, None) (intransitive)
+
+### Similarity
+12. similarity(think, know) > similarity(think, big)
+13. similarity(dog, dog) = 1.0
+14. similarity(the, journalism) < 0.5
+15. triple_sim("dog bites man", "cat bites man") → subj<1.0, pred=1.0, obj=1.0
+16. triple_sim("dog bites man", "man bites dog") → subj and obj SWAPPED
+17. sentence_sim("dog bites man", "dog bites man") = 1.0
+18. sentence_sim("dog bites man", "man bites dog") < 0.85
+
+### NSM Decomposition
+19. decompose("journalism") contains "say" and "word" and "people"
+20. nearest_prime("think") = "think" (it IS a prime)
+21. nearest_prime("believe") → "think" (nearest prime)
+
+### Integration with ThinkingGraph
+22. Cognitive verb SYNTHESIS uses semantic similarity for merge decisions
+23. Cognitive verb COUNTERFACTUAL negates predicate plane
+24. Cognitive verb MODULATE shifts thinking style based on content PoS
+
+## PERFORMANCE TARGETS
+
+```
+Operation              Target         Method
+─────────              ──────         ──────
+tokenize(word)         < 100ns        hash lookup
+tokenize(sentence)     < 1μs          O(n) scan
+parse(sentence)        < 500ns        6-state FSM
+triple_distance        < 10ns         3 matrix lookups
+triple_similarity      < 15ns         3 lookups + table
+sentence_similarity    < 5μs          VSA compose + hamming
+decompose(word)        < 1μs          scan 63 primes
+full pipeline          < 10μs         text → calibrated similarity
+```
 
 ## OUTPUT
 
 Branch: `feat/deepnsm-cam`
-New files: `src/nsm_tokenizer.rs`, `src/nsm_parser.rs`, `src/nsm_encoder.rs`,
-           `src/nsm_similarity.rs`, `src/nsm_build.rs`
-Modified: `src/lib.rs` (add modules)
-
-Runtime artifacts: `nsm_runtime/` directory with binary files.
-Total: ~9 MB runtime, 7 Rust source files, 18 tests.
-
-## CROSS-REPO DEPENDENCIES
-
-```
-DeepNSM (this repo)
-  ├── word_frequency/           ← data (already pushed)
-  ├── src/nsm_*.rs              ← NEW: the semantic transformer
-  └── nsm_runtime/              ← NEW: binary artifacts
-
-ndarray (AdaWorldAPI/ndarray)
-  └── src/hpc/cam_pq.rs         ← CamCodebook, used for OOV resolution
-
-lance-graph (AdaWorldAPI/lance-graph)
-  ├── crates/bgz17/             ← Base17, SimilarityTable, DistanceMatrix
-  ├── crates/lance-graph/cam_pq/ ← DataFusion UDF wiring
-  └── crates/lance-graph-planner/
-      └── src/thinking/
-          ├── graph.rs           ← ThinkingGraph.with_semantics()
-          └── process.rs         ← CognitiveVerb semantic extensions
-```
+New crate: `crates/deepnsm/`
+Modified: `crates/lance-graph-planner/src/thinking/{mod,graph,semantic}.rs`
+Data: loaded from `DeepNSM/word_frequency/` at build time
+Tests: 24+ tests covering tokenizer, parser, similarity, integration
