@@ -1,0 +1,884 @@
+{
+  "before": {
+    "rank": 239,
+    "word_index": 238,
+    "cam": [
+      237,
+      188,
+      71,
+      6,
+      234,
+      131
+    ],
+    "cam_hex": "edbc4706ea83",
+    "pos": "i"
+  },
+  "hear": {
+    "rank": 184,
+    "word_index": 183,
+    "cam": [
+      15,
+      56,
+      142,
+      149,
+      197,
+      254
+    ],
+    "cam_hex": "0f388e95c5fe",
+    "pos": "v"
+  },
+  "you": {
+    "rank": 9,
+    "word_index": 8,
+    "cam": [
+      12,
+      133,
+      82,
+      50,
+      78,
+      120
+    ],
+    "cam_hex": "0c8552324e78",
+    "pos": "p"
+  },
+  "word": {
+    "rank": 241,
+    "word_index": 240,
+    "cam": [
+      237,
+      56,
+      228,
+      149,
+      57,
+      229
+    ],
+    "cam_hex": "ed38e49539e5",
+    "pos": "n"
+  },
+  "people": {
+    "rank": 62,
+    "word_index": 61,
+    "cam": [
+      254,
+      81,
+      82,
+      234,
+      171,
+      6
+    ],
+    "cam_hex": "fe5152eaab06",
+    "pos": "n"
+  },
+  "above": {
+    "rank": 1082,
+    "word_index": 1081,
+    "cam": [
+      84,
+      51,
+      1,
+      124,
+      11,
+      13
+    ],
+    "cam_hex": "5433017c0b0d",
+    "pos": "i"
+  },
+  "something": {
+    "rank": 123,
+    "word_index": 122,
+    "cam": [
+      44,
+      246,
+      17,
+      40,
+      107,
+      6
+    ],
+    "cam_hex": "2cf611286b06",
+    "pos": "p"
+  },
+  "small": {
+    "rank": 248,
+    "word_index": 247,
+    "cam": [
+      236,
+      49,
+      8,
+      22,
+      124,
+      208
+    ],
+    "cam_hex": "ec3108167cd0",
+    "pos": "j"
+  },
+  "part": {
+    "rank": 183,
+    "word_index": 182,
+    "cam": [
+      58,
+      188,
+      206,
+      6,
+      57,
+      49
+    ],
+    "cam_hex": "3abcce063931",
+    "pos": "n"
+  },
+  "side": {
+    "rank": 286,
+    "word_index": 285,
+    "cam": [
+      237,
+      246,
+      32,
+      149,
+      234,
+      131
+    ],
+    "cam_hex": "edf62095ea83",
+    "pos": "n"
+  },
+  "same": {
+    "rank": 158,
+    "word_index": 157,
+    "cam": [
+      168,
+      49,
+      206,
+      131,
+      17,
+      90
+    ],
+    "cam_hex": "a831ce83115a",
+    "pos": "d"
+  },
+  "because": {
+    "rank": 88,
+    "word_index": 87,
+    "cam": [
+      254,
+      15,
+      82,
+      42,
+      27,
+      6
+    ],
+    "cam_hex": "fe0f522a1b06",
+    "pos": "c"
+  },
+  "many": {
+    "rank": 113,
+    "word_index": 112,
+    "cam": [
+      58,
+      214,
+      82,
+      131,
+      17,
+      90
+    ],
+    "cam_hex": "3ad65283115a",
+    "pos": "d"
+  },
+  "good": {
+    "rank": 93,
+    "word_index": 92,
+    "cam": [
+      254,
+      95,
+      107,
+      131,
+      3,
+      238
+    ],
+    "cam_hex": "fe5f6b8303ee",
+    "pos": "j"
+  },
+  "can": {
+    "rank": 37,
+    "word_index": 36,
+    "cam": [
+      69,
+      4,
+      27,
+      130,
+      63,
+      25
+    ],
+    "cam_hex": "45041b823f19",
+    "pos": "v"
+  },
+  "the": {
+    "rank": 1,
+    "word_index": 0,
+    "cam": [
+      83,
+      17,
+      63,
+      20,
+      78,
+      120
+    ],
+    "cam_hex": "53113f144e78",
+    "pos": "a"
+  },
+  "die": {
+    "rank": 371,
+    "word_index": 370,
+    "cam": [
+      236,
+      176,
+      142,
+      160,
+      175,
+      90
+    ],
+    "cam_hex": "ecb08ea0af5a",
+    "pos": "v"
+  },
+  "know": {
+    "rank": 39,
+    "word_index": 38,
+    "cam": [
+      69,
+      214,
+      82,
+      2,
+      63,
+      12
+    ],
+    "cam_hex": "45d652023f0c",
+    "pos": "v"
+  },
+  "more": {
+    "rank": 83,
+    "word_index": 82,
+    "cam": [
+      44,
+      214,
+      27,
+      234,
+      219,
+      17
+    ],
+    "cam_hex": "2cd61beadb11",
+    "pos": "r"
+  },
+  "true": {
+    "rank": 414,
+    "word_index": 413,
+    "cam": [
+      23,
+      2,
+      32,
+      15,
+      229,
+      229
+    ],
+    "cam_hex": "1702200fe5e5",
+    "pos": "j"
+  },
+  "not": {
+    "rank": 23,
+    "word_index": 22,
+    "cam": [
+      120,
+      133,
+      12,
+      219,
+      63,
+      25
+    ],
+    "cam_hex": "78850cdb3f19",
+    "pos": "x"
+  },
+  "some": {
+    "rank": 67,
+    "word_index": 66,
+    "cam": [
+      254,
+      81,
+      27,
+      234,
+      171,
+      238
+    ],
+    "cam_hex": "fe511beaabee",
+    "pos": "d"
+  },
+  "one": {
+    "rank": 60,
+    "word_index": 59,
+    "cam": [
+      170,
+      81,
+      27,
+      234,
+      171,
+      238
+    ],
+    "cam_hex": "aa511beaabee",
+    "pos": "m"
+  },
+  "all": {
+    "rank": 43,
+    "word_index": 42,
+    "cam": [
+      170,
+      81,
+      27,
+      130,
+      188,
+      25
+    ],
+    "cam_hex": "aa511b82bc19",
+    "pos": "d"
+  },
+  "body": {
+    "rank": 348,
+    "word_index": 347,
+    "cam": [
+      138,
+      56,
+      32,
+      220,
+      229,
+      49
+    ],
+    "cam_hex": "8a3820dce531",
+    "pos": "n"
+  },
+  "this": {
+    "rank": 19,
+    "word_index": 18,
+    "cam": [
+      49,
+      133,
+      12,
+      50,
+      63,
+      12
+    ],
+    "cam_hex": "31850c323f0c",
+    "pos": "d"
+  },
+  "want": {
+    "rank": 68,
+    "word_index": 67,
+    "cam": [
+      170,
+      214,
+      107,
+      42,
+      188,
+      25
+    ],
+    "cam_hex": "aad66b2abc19",
+    "pos": "v"
+  },
+  "do": {
+    "rank": 15,
+    "word_index": 14,
+    "cam": [
+      12,
+      133,
+      118,
+      50,
+      15,
+      120
+    ],
+    "cam_hex": "0c8576320f78",
+    "pos": "v"
+  },
+  "be": {
+    "rank": 2,
+    "word_index": 1,
+    "cam": [
+      83,
+      17,
+      63,
+      20,
+      78,
+      120
+    ],
+    "cam_hex": "53113f144e78",
+    "pos": "v"
+  },
+  "short": {
+    "rank": 669,
+    "word_index": 668,
+    "cam": [
+      143,
+      38,
+      9,
+      188,
+      247,
+      5
+    ],
+    "cam_hex": "8f2609bcf705",
+    "pos": "j"
+  },
+  "now": {
+    "rank": 72,
+    "word_index": 71,
+    "cam": [
+      69,
+      214,
+      107,
+      42,
+      188,
+      25
+    ],
+    "cam_hex": "45d66b2abc19",
+    "pos": "r"
+  },
+  "happen": {
+    "rank": 170,
+    "word_index": 169,
+    "cam": [
+      56,
+      61,
+      91,
+      149,
+      27,
+      6
+    ],
+    "cam_hex": "383d5b951b06",
+    "pos": "v"
+  },
+  "below": {
+    "rank": 1526,
+    "word_index": 1525,
+    "cam": [
+      243,
+      118,
+      243,
+      65,
+      31,
+      14
+    ],
+    "cam_hex": "f376f3411f0e",
+    "pos": "r"
+  },
+  "big": {
+    "rank": 156,
+    "word_index": 155,
+    "cam": [
+      168,
+      49,
+      233,
+      90,
+      219,
+      17
+    ],
+    "cam_hex": "a831e95adb11",
+    "pos": "j"
+  },
+  "two": {
+    "rank": 90,
+    "word_index": 89,
+    "cam": [
+      44,
+      214,
+      82,
+      131,
+      27,
+      6
+    ],
+    "cam_hex": "2cd652831b06",
+    "pos": "m"
+  },
+  "if": {
+    "rank": 40,
+    "word_index": 39,
+    "cam": [
+      69,
+      81,
+      27,
+      130,
+      188,
+      25
+    ],
+    "cam_hex": "45511b82bc19",
+    "pos": "c"
+  },
+  "touch": {
+    "rank": 1157,
+    "word_index": 1156,
+    "cam": [
+      130,
+      179,
+      20,
+      4,
+      170,
+      78
+    ],
+    "cam_hex": "82b31404aa4e",
+    "pos": "v"
+  },
+  "near": {
+    "rank": 862,
+    "word_index": 861,
+    "cam": [
+      251,
+      241,
+      26,
+      116,
+      106,
+      58
+    ],
+    "cam_hex": "fbf11a746a3a",
+    "pos": "i"
+  },
+  "bad": {
+    "rank": 229,
+    "word_index": 228,
+    "cam": [
+      168,
+      61,
+      91,
+      149,
+      197,
+      254
+    ],
+    "cam_hex": "a83d5b95c5fe",
+    "pos": "j"
+  },
+  "have": {
+    "rank": 11,
+    "word_index": 10,
+    "cam": [
+      12,
+      120,
+      12,
+      50,
+      15,
+      12
+    ],
+    "cam_hex": "0c780c320f0c",
+    "pos": "v"
+  },
+  "when": {
+    "rank": 70,
+    "word_index": 69,
+    "cam": [
+      170,
+      81,
+      82,
+      234,
+      171,
+      6
+    ],
+    "cam_hex": "aa5152eaab06",
+    "pos": "c"
+  },
+  "someone": {
+    "rank": 302,
+    "word_index": 301,
+    "cam": [
+      102,
+      56,
+      21,
+      71,
+      17,
+      182
+    ],
+    "cam_hex": "6638154711b6",
+    "pos": "p"
+  },
+  "see": {
+    "rank": 56,
+    "word_index": 55,
+    "cam": [
+      170,
+      214,
+      82,
+      234,
+      188,
+      25
+    ],
+    "cam_hex": "aad652eabc19",
+    "pos": "v"
+  },
+  "move": {
+    "rank": 227,
+    "word_index": 226,
+    "cam": [
+      237,
+      188,
+      32,
+      149,
+      17,
+      90
+    ],
+    "cam_hex": "edbc2095115a",
+    "pos": "v"
+  },
+  "other": {
+    "rank": 74,
+    "word_index": 73,
+    "cam": [
+      254,
+      81,
+      27,
+      234,
+      219,
+      17
+    ],
+    "cam_hex": "fe511beadb11",
+    "pos": "j"
+  },
+  "think": {
+    "rank": 53,
+    "word_index": 52,
+    "cam": [
+      69,
+      214,
+      107,
+      42,
+      188,
+      25
+    ],
+    "cam_hex": "45d66b2abc19",
+    "pos": "v"
+  },
+  "feel": {
+    "rank": 136,
+    "word_index": 135,
+    "cam": [
+      15,
+      95,
+      17,
+      40,
+      27,
+      6
+    ],
+    "cam_hex": "0f5f11281b06",
+    "pos": "v"
+  },
+  "new": {
+    "rank": 100,
+    "word_index": 99,
+    "cam": [
+      44,
+      214,
+      82,
+      234,
+      219,
+      17
+    ],
+    "cam_hex": "2cd652eadb11",
+    "pos": "j"
+  },
+  "old": {
+    "rank": 174,
+    "word_index": 173,
+    "cam": [
+      15,
+      49,
+      71,
+      149,
+      197,
+      90
+    ],
+    "cam_hex": "0f314795c55a",
+    "pos": "j"
+  },
+  "after": {
+    "rank": 131,
+    "word_index": 130,
+    "cam": [
+      44,
+      15,
+      206,
+      131,
+      17,
+      90
+    ],
+    "cam_hex": "2c0fce83115a",
+    "pos": "i"
+  },
+  "where": {
+    "rank": 157,
+    "word_index": 156,
+    "cam": [
+      15,
+      246,
+      71,
+      90,
+      107,
+      6
+    ],
+    "cam_hex": "0ff6475a6b06",
+    "pos": "r"
+  },
+  "here": {
+    "rank": 78,
+    "word_index": 77,
+    "cam": [
+      254,
+      188,
+      107,
+      131,
+      188,
+      25
+    ],
+    "cam_hex": "febc6b83bc19",
+    "pos": "r"
+  },
+  "very": {
+    "rank": 105,
+    "word_index": 104,
+    "cam": [
+      254,
+      95,
+      206,
+      131,
+      27,
+      6
+    ],
+    "cam_hex": "fe5fce831b06",
+    "pos": "r"
+  },
+  "say": {
+    "rank": 26,
+    "word_index": 25,
+    "cam": [
+      120,
+      133,
+      82,
+      2,
+      188,
+      25
+    ],
+    "cam_hex": "78855202bc19",
+    "pos": "v"
+  },
+  "i": {
+    "rank": 8,
+    "word_index": 7,
+    "cam": [
+      12,
+      120,
+      118,
+      50,
+      78,
+      120
+    ],
+    "cam_hex": "0c7876324e78",
+    "pos": "p"
+  },
+  "far": {
+    "rank": 266,
+    "word_index": 265,
+    "cam": [
+      237,
+      7,
+      71,
+      95,
+      234,
+      131
+    ],
+    "cam_hex": "ed07475fea83",
+    "pos": "r"
+  },
+  "time": {
+    "rank": 54,
+    "word_index": 53,
+    "cam": [
+      170,
+      81,
+      27,
+      130,
+      188,
+      238
+    ],
+    "cam_hex": "aa511b82bcee",
+    "pos": "n"
+  },
+  "maybe": {
+    "rank": 251,
+    "word_index": 250,
+    "cam": [
+      102,
+      2,
+      59,
+      15,
+      197,
+      254
+    ],
+    "cam_hex": "66023b0fc5fe",
+    "pos": "r"
+  },
+  "live": {
+    "rank": 209,
+    "word_index": 208,
+    "cam": [
+      168,
+      188,
+      17,
+      149,
+      17,
+      90
+    ],
+    "cam_hex": "a8bc1195115a",
+    "pos": "v"
+  },
+  "like": {
+    "rank": 73,
+    "word_index": 72,
+    "cam": [
+      170,
+      214,
+      107,
+      42,
+      188,
+      238
+    ],
+    "cam_hex": "aad66b2abcee",
+    "pos": "i"
+  },
+  "long": {
+    "rank": 284,
+    "word_index": 283,
+    "cam": [
+      237,
+      246,
+      32,
+      71,
+      9,
+      49
+    ],
+    "cam_hex": "edf620470931",
+    "pos": "r"
+  },
+  "much": {
+    "rank": 148,
+    "word_index": 147,
+    "cam": [
+      44,
+      49,
+      71,
+      40,
+      219,
+      17
+    ],
+    "cam_hex": "2c314728db11",
+    "pos": "d"
+  },
+  "kind": {
+    "rank": 256,
+    "word_index": 255,
+    "cam": [
+      58,
+      61,
+      32,
+      71,
+      17,
+      90
+    ],
+    "cam_hex": "3a3d2047115a",
+    "pos": "n"
+  }
+}
